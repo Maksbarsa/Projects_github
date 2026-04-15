@@ -1,0 +1,88 @@
+Отправка только моих фалов на GitHub через терминал, не трогая виртуальные среды (.venv, vtnv), временные файлы PyCharm, кеши и внешние библиотеки:
+
+1️⃣ Создай или открой .gitignore в корне проекта
+
+В терминале: touch .gitignore
+
+2️⃣ Пропиши правила для игнорирования ненужного
+
+Для PyCharm + Python проекта удобно использовать такой .gitignore:
+
+# Виртуальные окружения
+.venv/
+vtnv/
+env/
+venv/
+
+# Python кеши
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Файлы базы данных (если не хочешь пушить)
+*.sqlite3
+
+# PyCharm
+.idea/
+*.iml
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.swp
+
+# Конфиги среды
+.env
+
+# Сборки и дистрибутивы
+dist/
+build/
+*.egg-info/
+
+# Внешние библиотеки
+*.egg
+
+3️⃣ Инициализируй репозиторий (если ещё не делал)
+git init
+
+4️⃣ Добавь файлы в Git
+git add . 
+# Git добавит только те файлы, которые не перечислены в .gitignore, то есть твои скрипты (DZmain.py, DZmodels.py, SQL.py и т.д.).
+
+5️⃣ Делаем коммит
+git commit -m "Первый коммит с проектом"
+
+6️⃣ Привязываем репозиторий GitHub
+
+Создай репозиторий на GitHub (например, dz_project).
+
+Скопируй URL репозитория, например:
+
+https://github.com/maksbarsa/dz_project.git
+
+
+Привяжи его и запушь:
+
+git remote add origin https://github.com/maksbarsa/dz_project.git
+git push -u origin main
+
+
+После этого твой проект с .gitignore будет на GitHub, и Git не будет трогать .venv, venv, .idea и временные файлы.
+
+7️⃣ Через Personal Access Token (правильный способ)
+
+GitHub теперь использует токены вместо пароля:
+
+Перейди на GitHub → Settings → Developer settings → Personal Access Tokens → Tokens (classic)
+
+Нажми Generate new token → выбери срок действия и права repo (чтобы пушить репозитории)
+
+Скопируй сгенерированный токен один раз
+
+Когда Git попросит Password, вставь этот токен вместо пароля
+
+Пример:
+
+Username for 'https://github.com': maksbarsa
+Password for 'https://github.com': <токен сюда>
